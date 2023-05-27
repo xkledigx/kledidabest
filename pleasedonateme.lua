@@ -40,26 +40,21 @@ Label:UpdateLabel("New Title")
 
 local Page = Tab:CreateFrame("AUTO TXT")
 
-local randomWords = {
-   "hehe im kledi",
-   "sup im kledi",
-   "hi im kledi",
-   "hello im kledi",
-}
-
-Toggle = Page:CreateToggle("Toggle", "Description", function(Value)
-   Toggle:UpdateToggle("New Title", "New Description")
-   repchat = Value
+local Toggle = Page:CreateToggle("Toggle", "Description", function()
+    Toggle:UpdateToggle("New Title", "New Description")
+    
+    local randomWords = {
+        "hehe im kledi",
+        "sup im kledi",
+        "hi im kledi",
+        "hello im kledi",
+    }
+    
+    local repchat = true
+    
+    while repchat do
+        local chosenWord = randomWords[math.random(#randomWords)]
+        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
+        wait(15)
+    end
 end)
-
-while true do 
-   local chosenWord = randomWords[math.random(#randomWords)]
-
-   if repchat == true then
-      game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
-   end
-   
-   wait(15)
-end
-wait(5)
-      end 
