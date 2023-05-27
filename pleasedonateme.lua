@@ -45,10 +45,8 @@ local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function(Va
     repchat = Value
     
     local randomWords = {
-        "hehe im kledi",
-        "sup im kledi",
-        "hi im kledi",
-        "hello im kledi",
+        "Please Donate ME",
+        
     }
     
     local chosenWord = ""
@@ -60,6 +58,6 @@ local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function(Va
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
             currentIndex = currentIndex % #randomWords + 1
         end
-        wait(5)
+        wait(120)
     end
 end)
