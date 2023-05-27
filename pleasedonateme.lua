@@ -44,8 +44,6 @@ Button = Page:CreateButtonfunction notify(msg)
     SetNotificationTextEntry("STRING")
     AddTextComponentString(msg)
     DrawNotification(true, false)
-end
-
 Citizen.CreateThread(function()
     
     local announcer = "Please Donate ME"
