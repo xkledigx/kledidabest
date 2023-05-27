@@ -40,27 +40,16 @@ Label:UpdateLabel("New Title")
 
 local Page = Tab:CreateFrame("AUTO TXT")
 
-Button = Page:CreateButtonfunction notify(msg)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString(msg)
-    DrawNotification(true, false)
-Citizen.CreateThread(function()
-    
-    local announcer = "Please Donate ME"
-    local autoMessage = "Please Donate ME"
-    
-    while (true) do
-        Citizen.Wait(120) -- Nachricht alle 10 Minuten
-        TriggerEvent('chat:addMessage',{
-          color = { 255, 0, 0},
-          multiline = false,
-          args = {announcer}
-        })
-        
-        TriggerEvent('chat:addMessage',{
-          color = { 255, 255, 255},
-          multiline = false,
-          args = {autoMessage}
-        })
-    end
-end, false)
+local randomWords = {
+   "hehe im kledi",
+   "sup im kledi",
+   "hi im kledi",
+   "hello im kledi",
+}
+local repchat = true
+while true do 
+local chosenWord = randomWords[math.random(#randomWords)]
+
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
+wait(5)
+      end 
