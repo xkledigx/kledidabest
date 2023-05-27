@@ -40,8 +40,9 @@ Label:UpdateLabel("New Title")
 
 local Page = Tab:CreateFrame("AUTO TXT")
 
-local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function()
+local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function(Value)
     Toggle:UpdateToggle("New Title", "New Description")
+      repchat = Value
     
     local randomWords = {
         "hehe im kledi",
@@ -49,10 +50,8 @@ local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function()
         "hi im kledi",
         "hello im kledi",
     }
-    
-    local repchat = true
-    
-    while repchat do
+     
+    if repchat == true then
         local chosenWord = randomWords[math.random(#randomWords)]
         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
         wait(15)
