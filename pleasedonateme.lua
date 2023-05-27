@@ -40,7 +40,7 @@ Label:UpdateLabel("New Title")
 
 local Page = Tab:CreateFrame("AUTO TXT")
 
-local Toggle = Page:CreateToggle("Toggle", "Description", function()
+local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function()
     Toggle:UpdateToggle("New Title", "New Description")
     
     local randomWords = {
