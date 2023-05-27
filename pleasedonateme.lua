@@ -50,11 +50,15 @@ local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function(Va
         "hi im kledi",
         "hello im kledi",
     }
+    
+    local chosenWord = ""
+    local currentIndex = 1
      
     while repchat do
         if repchat then
-            local chosenWord = randomWords[math.random(#randomWords)]
+            chosenWord = randomWords[currentIndex]
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
+            currentIndex = currentIndex % #randomWords + 1
         end
         wait(5)
     end
