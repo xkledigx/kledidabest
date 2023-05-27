@@ -46,10 +46,20 @@ local randomWords = {
    "hi im kledi",
    "hello im kledi",
 }
-local repchat = true
-while true do 
-local chosenWord = randomWords[math.random(#randomWords)]
 
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
+Toggle = Page:CreateToggle("Toggle", "Description", function(Value)
+   Toggle:UpdateToggle("New Title", "New Description")
+   repchat = Value
+end)
+
+while true do 
+   local chosenWord = randomWords[math.random(#randomWords)]
+
+   if repchat == true then
+      game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chosenWord, 'All')
+   end
+   
+   wait(15)
+end
 wait(5)
       end 
