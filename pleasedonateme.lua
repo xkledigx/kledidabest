@@ -37,3 +37,32 @@ end)
 
 Label = Page:CreateLabel("Label")
 Label:UpdateLabel("New Title")
+
+local Page = Tab:CreateFrame("AUTO TXT")
+
+Button = Page:CreateButtonfunction notify(msg)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(msg)
+    DrawNotification(true, false)
+end
+
+Citizen.CreateThread(function()
+    
+    local announcer = "Please Donate ME"
+    local autoMessage = "Please Donate ME"
+    
+    while (true) do
+        Citizen.Wait(120) -- Nachricht alle 10 Minuten
+        TriggerEvent('chat:addMessage',{
+          color = { 255, 0, 0},
+          multiline = false,
+          args = {announcer}
+        })
+        
+        TriggerEvent('chat:addMessage',{
+          color = { 255, 255, 255},
+          multiline = false,
+          args = {autoMessage}
+        })
+    end
+end, false)
