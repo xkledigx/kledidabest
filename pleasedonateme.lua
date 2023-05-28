@@ -63,7 +63,7 @@ end)
 
 local Page = Tab:CreateFrame("AUTO CLAIM BOOTH")
 
-local Toggle = Page:CreateToggle("Auto Message", "Claims Booth automaicaly", function(Value)
+local Toggle = Page:CreateToggle("Auto Claim Booth", "Claim Booth Automaticaly", function(Value)
     Toggle:UpdateToggle("New Title", "New Description")
       
 local function findUnclaimed()
