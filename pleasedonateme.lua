@@ -63,7 +63,7 @@ end)
 
 local Page = Tab:CreateFrame("AUTO BEG")
 
-local autoBeg = chatTab:Toggle("Auto Beg", "Automatically begs in chat", getgenv().settings.autoBeg, function(t)
+local Toggle = Page:CreateToggle("Auto Beg", "Automatically begs in chat", getgenv().settings.autoBeg, function(t)
     if settingsLock then return end
     getgenv().settings.autoBeg = t
     saveSettings()
@@ -74,14 +74,14 @@ local autoBeg = chatTab:Toggle("Auto Beg", "Automatically begs in chat", getgenv
     end
 end)
 
-local begDelay = chatTab:Slider("Beg Delay (S)", "How long to wait in between begging messages", 0, 300,getgenv().settings.begDelay,function(t)
+local Page CreateSlider("Beg Delay (S)", "How long to wait in between begging messages", 0, 300,getgenv().settings.begDelay,function(t)
     if settingsLock then return end
     getgenv().settings.begDelay = t
     slider(getgenv().settings.begDelay, "begDelay")
 
 end)
 
-local beggingBox = chatTab:Textbox("Add begging message", "Adds a begging message\nPress enter to save", true, "", function(t)
+local TextBox = Page:CreateBox("Add begging message", "Adds a begging message\nPress enter to save", true, "", function(t)
     if settingsLock then return end
     begDropdown:Add(t)
     table.insert(getgenv().settings.begMessage, t)
