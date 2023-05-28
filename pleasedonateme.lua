@@ -61,20 +61,33 @@ local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function(Va
     end
 end)
 
-local Page = Tab:CreateFrame("AUTO CLAIM BOOTH")
+local Page = Tab:CreateFrame("AUTO BEG")
 
-localButton = Page:CreateButton("Auto Claim Booth"), "Claim Booth Automaticaly", function(Value)
-    Button:UpdateButton("New Title", "New Description")
-    findUnclaimed = value
-    claim=value
-
-local function boothclaim()
-    require(game.ReplicatedStorage.Remotes).Event("ClaimBooth"):InvokeServer(unclaimed[1])
-    if not string.find(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:FindFirstChild(tostring("BoothUI".. unclaimed[1])).Details.Owner.Text, Players.LocalPlayer.DisplayName) then
-        task.wait(1)
-        if not string.find(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:FindFirstChild(tostring("BoothUI".. unclaimed[1])).Details.Owner.Text, Players.LocalPlayer.DisplayName) then
-            error()
-        end
+local autoBeg = chatTab:Toggle("Auto Beg", "Automatically begs in chat", getgenv().settings.autoBeg, function(t)
+    if settingsLock then return end
+    getgenv().settings.autoBeg = t
+    saveSettings()
+    if t then
+        spamming = task.spawn(begging)
+    else
+        task.cancel(spamming)
     end
-end
-end
+end)
+
+local begDelay = chatTab:Slider("Beg Delay (S)", "How long to wait in between begging messages", 0, 300,getgenv().settings.begDelay,function(t)
+    if settingsLock then return end
+    getgenv().settings.begDelay = t
+    slider(getgenv().settings.begDelay, "begDelay")
+
+end)
+
+local beggingBox = chatTab:Textbox("Add begging message", "Adds a begging message\nPress enter to save", true, "", function(t)
+    if settingsLock then return end
+    begDropdown:Add(t)
+    table.insert(getgenv().settings.begMessage, t)
+    saveSettings()
+    if getgenv().settings.autoBeg then
+        task.cancel(spamming)
+        spamming = task.spawn(begging)
+    end
+end)
