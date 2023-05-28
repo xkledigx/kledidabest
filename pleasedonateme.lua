@@ -78,6 +78,7 @@ if not pcall(findUnclaimed) then
 end
 local claimCount = #unclaimed
 --Claim booth function
+
 local function boothclaim()
     require(game.ReplicatedStorage.Remotes).Event("ClaimBooth"):InvokeServer(unclaimed[1])
     if not string.find(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:FindFirstChild(tostring("BoothUI".. unclaimed[1])).Details.Owner.Text, Players.LocalPlayer.DisplayName) then
@@ -97,7 +98,10 @@ while not pcall(boothclaim) do
 end
 
 hopSet()
---Walks to booth
+
+local Toggle = Page:CreateToggle("WALK TO BOTH"), "Claim Booth Automaticaly", function(Value)
+    Toggle:UpdateToggle("New Title", "New Description")
+--walks to booth
 game:GetService('VirtualInputManager'):SendKeyEvent(true, "LeftControl", false, game)
 local Controls = require(Players.LocalPlayer.PlayerScripts:WaitForChild("PlayerModule")):GetControls()
 Controls:Disable()
@@ -119,5 +123,6 @@ while not atBooth do
     if Players.LocalPlayer.Character.Humanoid:GetState() == Enum.HumanoidStateType.Seated then
         Players.LocalPlayer.Character.Humanoid.Jump = true
     end
+end
 end
 end
