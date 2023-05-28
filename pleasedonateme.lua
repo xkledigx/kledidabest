@@ -63,7 +63,7 @@ end)
 
 local Page = Tab:CreateFrame("AUTO CLAIM BOOTH")
 
-local Toggle = Page:CreateToggle("Auto Claim Booth", "Claim Booth Automaticaly", function(Value)
+local Toggle = Page:CreateToggle("Auto Claim Booth"), "Claim Booth Automaticaly", function(Value)
     Toggle:UpdateToggle("New Title", "New Description")
       
 local function findUnclaimed()
@@ -119,4 +119,5 @@ while not atBooth do
     if Players.LocalPlayer.Character.Humanoid:GetState() == Enum.HumanoidStateType.Seated then
         Players.LocalPlayer.Character.Humanoid.Jump = true
     end
+end
 end
