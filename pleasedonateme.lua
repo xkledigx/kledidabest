@@ -60,6 +60,12 @@ local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function(Va
         wait(120)
     end
 end)
+
+local Page = Tab:CreateFrame("AUTO CLAIM BOOTH")
+
+local Toggle = Page:CreateToggle("Auto Message", "Claims Booth automaicaly", function(Value)
+    Toggle:UpdateToggle("New Title", "New Description")
+      
 local function findUnclaimed()
     for i, v in pairs(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:GetChildren()) do
         if (v.Details.Owner.Text == "unclaimed") then
