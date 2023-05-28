@@ -65,7 +65,8 @@ local Page = Tab:CreateFrame("AUTO CLAIM BOOTH")
 
 local Toggle = Page:CreateToggle("Auto Claim Booth"), "Claim Booth Automaticaly", function(Value)
     Toggle:UpdateToggle("New Title", "New Description")
-      
+    findUnclaimed = value
+
 local function findUnclaimed()
     for i, v in pairs(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:GetChildren()) do
         if (v.Details.Owner.Text == "unclaimed") then
@@ -103,7 +104,7 @@ local Page = Tab:CreateFrame("main")
 
 local Toggle = Page:CreateToggle("WALK TO BOTH"), "Claim Booth Automaticaly", function(Value)
     Toggle:UpdateToggle("New Title", "New Description")
-    
+
 --walks to booth
 game:GetService('VirtualInputManager'):SendKeyEvent(true, "LeftControl", false, game)
 local Controls = require(Players.LocalPlayer.PlayerScripts:WaitForChild("PlayerModule")):GetControls()
