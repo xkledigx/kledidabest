@@ -99,8 +99,11 @@ end
 
 hopSet()
 
+local Page = Tab:CreateFrame("main")
+
 local Toggle = Page:CreateToggle("WALK TO BOTH"), "Claim Booth Automaticaly", function(Value)
     Toggle:UpdateToggle("New Title", "New Description")
+    
 --walks to booth
 game:GetService('VirtualInputManager'):SendKeyEvent(true, "LeftControl", false, game)
 local Controls = require(Players.LocalPlayer.PlayerScripts:WaitForChild("PlayerModule")):GetControls()
