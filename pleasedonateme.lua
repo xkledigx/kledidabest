@@ -80,6 +80,12 @@ if not pcall(findUnclaimed) then
 end
 local claimCount = #unclaimed
 --Claim booth function
+    local Page = Tab:CreateFrame("AUTO CLAIM BOOTH")
+
+    localButton = Page:CreateButton("Auto Claim Booth"), "Claim Booth Automaticaly", function(boothclaim)
+        Button:UpdateButton("New Title", "New Description")
+        findUnclaimed = value
+        boothclaim = claim
 
 local function boothclaim()
     require(game.ReplicatedStorage.Remotes).Event("ClaimBooth"):InvokeServer(unclaimed[1])
@@ -128,6 +134,7 @@ while not atBooth do
     if Players.LocalPlayer.Character.Humanoid:GetState() == Enum.HumanoidStateType.Seated then
         Players.LocalPlayer.Character.Humanoid.Jump = true
     end
+end
 end
 end
 end
