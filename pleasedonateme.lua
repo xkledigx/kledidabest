@@ -45,8 +45,7 @@ local Toggle = Page:CreateToggle("Auto Message", "A do me fol a jo", function(Va
     repchat = Value
     
     local randomWords = {
-        "Please Donate ME",
-        
+        "Please Donate ME"
     }
     
     local chosenWord = ""
