@@ -79,9 +79,10 @@ if not pcall(findUnclaimed) then
     serverHop()
 end
 
+local claimCount = #unclaimed
+
 local Page = Tab:CreateFrame("Kledi")
 
-local claimCount = #unclaimed
 localButton = Page:CreateButton("BoothClaim"), "Claim Booth Automaticaly", function(boothclaim)
     Button:UpdateButton("New Title", "New Description")
     findUnclaimed = value
@@ -96,6 +97,7 @@ local function boothclaim()
         end
     end
 end
+
 --Checks if booth claim fails
 while not pcall(boothclaim) do
     if errCount >= claimCount then
