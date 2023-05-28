@@ -63,9 +63,10 @@ end)
 
 local Page = Tab:CreateFrame("AUTO CLAIM BOOTH")
 
-local Toggle = Page:CreateToggle("Auto Claim Booth"), "Claim Booth Automaticaly", function(Value)
-    Toggle:UpdateToggle("New Title", "New Description")
+local Button = Page:CreateButton("Auto Claim Booth"), "Claim Booth Automaticaly", function(Value)
+    Button:UpdateButton("New Title", "New Description")
     findUnclaimed = value
+    claim=value
 
 local function findUnclaimed()
     for i, v in pairs(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:GetChildren()) do
