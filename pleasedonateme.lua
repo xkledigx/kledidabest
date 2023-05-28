@@ -87,8 +87,6 @@ localButton = Page:CreateButton("BoothClaim"), "Claim Booth Automaticaly", funct
     findUnclaimed = value
     boothclaim = claim
 
-    local Page = Tab:CreateFrame("Kledi")
-
 local function boothclaim()
     require(game.ReplicatedStorage.Remotes).Event("ClaimBooth"):InvokeServer(unclaimed[1])
     if not string.find(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:FindFirstChild(tostring("BoothUI".. unclaimed[1])).Details.Owner.Text, Players.LocalPlayer.DisplayName) then
